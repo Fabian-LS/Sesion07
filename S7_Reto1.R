@@ -1,9 +1,7 @@
 ## RETO 01: RSTUDIO CLOUD -> GITHUB
 
-library(dplyr)
 library(DBI)
 library(RMySQL)
-library(ggplot2)
 
 # realizar la conexion con la base de datos
 MyDataBase <- dbConnect(
@@ -29,6 +27,7 @@ Lesp <- DataDB %>% filter(Language == "Spanish")
 Lesp
 Lesp.df <- as.data.frame(Lesp)
 
+# graficar dado el filtro realizado anteriormente de idioma
 library(ggplot2)
 Lesp.df %>% ggplot(aes( x = CountryCode, y=Percentage, fill = IsOfficial )) + 
   geom_bar(stat = "identity")+
